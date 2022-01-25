@@ -1,0 +1,12 @@
+/* .post{
+
+} */
+
+.post_image{
+    width:100%;
+    object-fit: contain;
+    /* image will always fit the size of the screen */
+}
+.post_text{
+    font-weight: normal;
+}
