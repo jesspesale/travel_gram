@@ -12,7 +12,7 @@
 .app_navbar{
     display: flex;
     justify-content: space-between;
-    padding: 25px;
+    padding: 23px;
     border-bottom: 1px solid lightgray;
     background-color: rgb(214, 214, 214);
 }

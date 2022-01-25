@@ -1,4 +1,5 @@
 import './App.css';
+import Post from './components/Post';
 
 function App() {
   return (
@@ -9,8 +10,7 @@ function App() {
       </div>
 
       {/* NavBar/ Header */}
-      {/* Posts */}
-      <h2>Hi there</h2>
+      <Post/>
     </div>
   )
 }
