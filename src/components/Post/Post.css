@@ -1,12 +1,33 @@
-/* .post{
+.post{
+    max-width: 500px;
+    background-color: white;
+    border: 2px solid lightgrey;
+    margin-bottom: 45px;
+    /* adding space between each post */
+}
 
-} */
+
 
 .post_image{
     width:100%;
     object-fit: contain;
     /* image will always fit the size of the screen */
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
 }
 .post_text{
     font-weight: normal;
+    padding: 18px;
+}
+
+.post_header{
+    display: flex;
+    /* throw it into a row by default */
+    align-items: center;
+    /* centered avatar and username vertically */
+    padding: 18px;
+}
+
+.post_avatar{
+    margin-right: 10px;
 }

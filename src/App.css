@@ -6,7 +6,6 @@
 
 .app {
   background-color: #F3F2EF;
-  height: 100vh;
 }
 
 .app_navbar{
@@ -14,5 +13,5 @@
     justify-content: space-between;
     padding: 23px;
     border-bottom: 1px solid lightgray;
-    background-color: rgb(214, 214, 214);
+    background-color: #aeddec
 }

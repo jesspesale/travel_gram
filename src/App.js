@@ -11,6 +11,9 @@ function App() {
 
       {/* NavBar/ Header */}
       <Post/>
+      <Post/>
+      <Post/>
+      <Post/>
     </div>
   )
 }
