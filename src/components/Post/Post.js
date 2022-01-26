@@ -3,7 +3,7 @@ import "./Post.css"
 import { Avatar } from '@mui/material';
 
 function Post({username, caption, imgUrl}) {
-    console.log(username)
+    
     return (
         <div className='post'>
             <div className='post_header'>
