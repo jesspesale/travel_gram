@@ -1,21 +1,20 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import './App.css';
 import Post from './components/Post/Post';
+import { db } from './firebase';
+import { doc, collection, getDocs, onSnapshot } from "firebase/firestore";
 
 function App() {
 
-  const [posts, setPosts] = useState([
-    {
-      username: "jess_pesale",
-      caption: "here we go",
-      imgUrl: "https://www.freecodecamp.org/news/content/images/2021/06/Ekran-Resmi-2019-11-18-18.08.13.png"
-    },
-    {
-      username: "nrusso", 
-      caption: "Lets Go!", 
-      imgUrl: "https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?b=1&k=20&m=1285301614&s=170667a&w=0&h=tDEC2-p91cZiNU5C19sVhB9L08PmaH5wIijCvRDalCI="
-    }
-  ]);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const dbPost = onSnapshot(collection(db, "posts"), (snapshot) => {
+
+      setPosts(snapshot.docs.map(doc => doc.data()))
+    })
+  }, [posts] )
+  // will run everytime a post changes
 
   return (
     <div className="app">
@@ -28,9 +27,6 @@ function App() {
             <Post key={post.caption} username={post.username} caption={post.caption} imgUrl={post.imgUrl} />
           ))
         }
-        {/* <Post username="jess_pesale" caption="here we go" imgUrl="https://www.freecodecamp.org/news/content/images/2021/06/Ekran-Resmi-2019-11-18-18.08.13.png"/> */}
-      {/* <Post username="nrusso" caption="Lets Go!" imgUrl="https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?b=1&k=20&m=1285301614&s=170667a&w=0&h=tDEC2-p91cZiNU5C19sVhB9L08PmaH5wIijCvRDalCI="/> */}
-      {/* <Post username="torit" caption="Dope" imgUrl="https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__480.jpg"/> */}
     </div>
   )
 }
