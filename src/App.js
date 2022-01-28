@@ -4,6 +4,9 @@ import Post from './components/Post/Post';
 import { db } from './firebase';
 import {collection, onSnapshot } from "firebase/firestore";
 //  getDocs,  ^^
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function App() {
 
@@ -21,9 +24,20 @@ function App() {
 
   return (
     <div className="app">
+      <Modal
+        // open={open}
+        // onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+    <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+      </Typography>   
+      </Modal>
+
+
       <div className="app_navbar">
         <p>TravelGram</p>
-
       </div>
         {
           posts.map(({id, post}) => (
