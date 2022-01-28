@@ -10,7 +10,6 @@ function App() {
 
   useEffect(() => {
     const dbPost = onSnapshot(collection(db, "posts"), (snapshot) => {
-
       setPosts(snapshot.docs.map(doc => doc.data()))
     })
   }, [posts] )
