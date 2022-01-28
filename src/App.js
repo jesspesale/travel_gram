@@ -2,17 +2,21 @@ import React, {useState, useEffect} from "react"
 import './App.css';
 import Post from './components/Post/Post';
 import { db } from './firebase';
-import { doc, collection, getDocs, onSnapshot } from "firebase/firestore";
+import {collection, onSnapshot } from "firebase/firestore";
+//  getDocs,  ^^
 
 function App() {
 
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const dbPost = onSnapshot(collection(db, "posts"), (snapshot) => {
-      setPosts(snapshot.docs.map(doc => doc.data()))
+    onSnapshot(collection(db, "posts"), (snapshot) => {
+      setPosts(snapshot.docs.map(doc => ({
+       id: doc.id,
+       posts: doc.data()
+      })))
     })
-  }, [posts] )
+  }, [posts]);
   // will run everytime a post changes
 
   return (
