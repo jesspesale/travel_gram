@@ -13,7 +13,7 @@ function App() {
     onSnapshot(collection(db, "posts"), (snapshot) => {
       setPosts(snapshot.docs.map(doc => ({
        id: doc.id,
-       posts: doc.data()
+       post: doc.data()
       })))
     })
   }, [posts]);
@@ -26,8 +26,9 @@ function App() {
 
       </div>
         {
-          posts.map(post => (
-            <Post key={post.caption} username={post.username} caption={post.caption} imgUrl={post.imgUrl} />
+          posts.map(({id, post}) => (
+            <Post key={id} username={post.username} caption={post.caption} imgUrl={post.imgUrl} />
+           // key tells it not to re-render every post but just the new posts
           ))
         }
     </div>
