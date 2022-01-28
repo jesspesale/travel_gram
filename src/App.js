@@ -9,8 +9,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 function App() {
-
   const [posts, setPosts] = useState([]);
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     onSnapshot(collection(db, "posts"), (snapshot) => {
@@ -25,12 +25,11 @@ function App() {
   return (
     <div className="app">
       <Modal
-        // open={open}
-        // onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        open={open}
+        onClose={() => setOpen(false)}
+  // on close listens for any clicks outside of the Modal
       >
-    <Typography id="modal-modal-title" variant="h6" component="h2">
+      <Typography id="modal-modal-title" variant="h6" component="h2">
             Text in a modal
       </Typography>   
       </Modal>
