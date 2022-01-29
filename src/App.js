@@ -5,7 +5,7 @@ import { db } from './firebase';
 import {collection, onSnapshot } from "firebase/firestore";
 //  getDocs,  ^^
 import Modal from '@mui/material/Modal';
-// import Button from '@mui/material/Button';
+import Button from '@mui/material/Button';
 import { makeStyles } from '@material-ui/core/styles';
 // import Typography from '@mui/material/Typography';
 
@@ -47,6 +47,10 @@ function App() {
   }, [posts]);
   // will run everytime a post changes
 
+  const signUp = (event) => {
+
+  }
+
   return (
     <div className="app">
             <Modal
@@ -57,10 +61,13 @@ function App() {
             <h2>I am a Modal </h2>
           </div>
           </Modal>
+
+
           
       <div className="app_navbar" >
         <p>TravelGram</p>
       </div>
+        <Button onClick={() => setOpen(true)} >Sign Up</Button>
         {
           posts.map(({id, post}) => (
             <Post key={id} username={post.username} caption={post.caption} imgUrl={post.imgUrl} />
