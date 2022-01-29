@@ -4,7 +4,7 @@ import Post from './components/Post/Post';
 import { db } from './firebase';
 import {collection, onSnapshot } from "firebase/firestore";
 
-import ModalElement from "./components/Modal/Modal"
+import ModalElement from "./components/Modal/ModalElement"
 
 function App() {
   const [posts, setPosts] = useState([]);
