@@ -52,40 +52,42 @@ function App() {
   // will run everytime a post changes
 
   const signUp = (event) => {
-
+    event.preventDefault()
   }
 
   return (
     <div className="app">
-            <Modal
-                open={open}
-                onClose={() => setOpen(false)}
-            >
-          <div style={modalStyle} className={classes.paper}>
+      <Modal open={open} onClose={() => setOpen(false)} >
+        <div style={modalStyle} className={classes.paper}>
+          <form className="app_signup" >
             <center>
-            <strong><p>TravelGram</p></strong>
+              <strong><p>TravelGram</p></strong>
               <Input 
                 placeholder="username"
                 type="text"
                 value={username}
                 onChange={(e)=> setUsername(e.target.value)}
               />
+              <br></br>
               <Input 
                 placeholder="email"
                 type="text"
                 value={email}
                 onChange={(e)=> setEmail(e.target.value)}
               />
+              <br></br>
               <Input 
                 placeholder="password"
                 type="password"
                 value={password}
                 onChange={(e)=> setPassword(e.target.value)}
                />
+               <br></br>
+               <Button type="submit" onClick={signUp}>Sign Up</Button>
             </center>
-
-          </div>
-          </Modal>
+          </form>
+        </div>
+      </Modal>
 
 
           
