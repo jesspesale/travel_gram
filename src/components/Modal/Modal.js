@@ -39,7 +39,8 @@ function ModalElement() {
 
   const signUp = (event) => {
     event.preventDefault()
-    auth.createUserWithEmailAndPassword(email, password)
+
+    createUserWithEmailAndPassword(auth, email, password)
     .catch((error) => alert(error.message))
   }
 
