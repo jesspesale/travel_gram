@@ -47,3 +47,14 @@ debugger
           })
         )
       }
+
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+  // on close listens for any clicks outside of the Modal
+      >
+      <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+      </Typography>   
+      </Modal> 
+
