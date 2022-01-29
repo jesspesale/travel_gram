@@ -1,0 +1,18 @@
+Modal.js
+
+useEffect - front end listener
+    listens to changes on the front end
+everytime state changes it refires all code inside (including onAuthStateChange)
+
+auth.onAuthStateChanged - a backend listener
+    listends to changes on backed including:
+        - login/ logout
+        - new user 
+
+The two work together - dont want use effect to get called everytime the user changes the username or something
+
+So we add the unsubscribe function - return by onAuthStateChange
+Then you return the unsubscribe 
+    says if the useEffect fires again, perform some clean up actions
+    before you refire the useEffect
+it unsubscirbes the listener so it doesnt spam with a thousand changes before rerendering
