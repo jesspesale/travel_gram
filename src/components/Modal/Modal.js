@@ -30,12 +30,28 @@ const useStyles = makeStyles(theme => ({
 function ModalElement() {
   const classes = useStyles()
   // turns the useStyle function above into a constant
+  const [open, setOpen] = useState(false)
   const [modalStyle] = useState(getModalStyle)
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useState(null);
 
-  const [open, setOpen] = useState(false)
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+    // listens for any authentication change that happens and fires authUser 
+        if(authUser) {
+        // if user has logged in
+            console.log(authUser)
+            setAuth(authUser)
+
+        } else{
+            setUser(null)
+    // if user has logged out set the user to null
+        }
+
+    })
+  }, []);
 
   const signUp = (event) => {
     event.preventDefault()
