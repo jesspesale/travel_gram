@@ -60,22 +60,20 @@ function App() {
       <Modal open={open} onClose={() => setOpen(false)} >
         <div style={modalStyle} className={classes.paper}>
           <form className="app_signup" >
-            <center>
-              <strong><p>TravelGram</p></strong>
+              <p className="modal_heading">TravelGram</p>
+              <br></br>
               <Input 
                 placeholder="username"
                 type="text"
                 value={username}
                 onChange={(e)=> setUsername(e.target.value)}
               />
-              <br></br>
               <Input 
                 placeholder="email"
                 type="text"
                 value={email}
                 onChange={(e)=> setEmail(e.target.value)}
               />
-              <br></br>
               <Input 
                 placeholder="password"
                 type="password"
@@ -84,7 +82,6 @@ function App() {
                />
                <br></br>
                <Button type="submit" onClick={signUp}>Sign Up</Button>
-            </center>
           </form>
         </div>
       </Modal>

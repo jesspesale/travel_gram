@@ -11,12 +11,23 @@
 .app_navbar{
     display: flex;
     justify-content: space-between;
-    padding: 23px;
+    padding: 15px;
     border-bottom: 1px solid lightgray;
-    background-color: #aeddec
+    background-color: #aeddec;
+    font-family: 'Supermercado One', cursive;
+    font-size: 22px;
 }
 
-/* .app_signup{
+.modal_heading{
+  font-weight: bold;
+  font-size: 24px;
+  text-decoration: underline;
+  font-family: 'Supermercado One', cursive;
+}
+.app_signup{
   display: flex;
   flex-direction: column;
-} */
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+}
