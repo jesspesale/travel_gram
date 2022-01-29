@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react"
 import './Modal.css';
-//  getDocs,  ^^
 import Modal from '@mui/material/Modal';
 import { auth } from '../../firebase.js';
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -28,10 +27,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function ModalElement() {
-  const classes = useStyles()
+  const classes = useStyles();
   // turns the useStyle function above into a constant
-  const [open, setOpen] = useState(false)
-  const [modalStyle] = useState(getModalStyle)
+  const [open, setOpen] = useState(false);
+  const [modalStyle] = useState(getModalStyle);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,8 +42,8 @@ function ModalElement() {
     // returns a function called an unsubscribe
         if(authUser) {
         // if user has logged in
-            console.log(authUser)
-            setAuth(authUser)
+            console.log(authUser);
+            setUser(authUser);
 
             if (authUser.displayName) {
                 // dont update username if they exist already
@@ -52,21 +51,21 @@ function ModalElement() {
                  // if we just created someone / a new user    
                 return authUser.updateProfile({
                     displayName: username
-                })
+                });
             }
         } else{
             setUser(null)  // if user has logged out set the user to null
         }
     })
-
-    return () => {
+        return () => {
 // perform some clean up actions before re-firing the use effect
+            unsubscribe();
+        }
 
-    }
-  }, [user, username]);
+    }, [user, username]);
 
   const signUp = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     createUserWithEmailAndPassword(auth, email, password)
     .catch((error) => alert(error.message))
