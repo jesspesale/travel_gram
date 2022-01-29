@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react"
 import './Modal.css';
 //  getDocs,  ^^
 import Modal from '@mui/material/Modal';
+import { auth } from '../../firebase.js';
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import{Button, Input} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -37,6 +39,8 @@ function ModalElement() {
 
   const signUp = (event) => {
     event.preventDefault()
+    auth.createUserWithEmailAndPassword(email, password)
+    .catch((error) => alert(error.message))
   }
 
   return (
