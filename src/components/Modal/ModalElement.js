@@ -40,22 +40,12 @@ function ModalElement() {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
     // listens for any authentication change that happens and fires authUser 
     // returns a function called an unsubscribe
-        if(authUser) {
-        // if user has logged in
-            console.log(authUser);
-            setUser(authUser);
-
-            if (authUser.displayName) {
-                // dont update username if they exist already
-            } else{  
-                 // if we just created someone / a new user    
-                return authUser.updateProfile({
-                    displayName: username
-                });
-            }
-        } else{
-            setUser(null)  // if user has logged out set the user to null
-        }
+      if (authUser) {
+        console.log(authUser)
+        setUser(authUser)
+      } else {
+        setUser(null)
+      }
     })
         return () => {
 // perform some clean up actions before re-firing the use effect
@@ -68,6 +58,12 @@ function ModalElement() {
     event.preventDefault();
 
     createUserWithEmailAndPassword(auth, email, password)
+    .then((authUser) => {
+      // if user is created update their username
+        return authUser.user.updateProfile({
+          displayName: username
+        })
+    })
     .catch((error) => alert(error.message))
   }
 
