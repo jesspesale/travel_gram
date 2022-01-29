@@ -38,20 +38,32 @@ function ModalElement() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
     // listens for any authentication change that happens and fires authUser 
+    // returns a function called an unsubscribe
         if(authUser) {
         // if user has logged in
             console.log(authUser)
             setAuth(authUser)
 
+            if (authUser.displayName) {
+                // dont update username if they exist already
+            } else{  
+                 // if we just created someone / a new user    
+                return authUser.updateProfile({
+                    displayName: username
+                })
+            }
         } else{
-            setUser(null)
-    // if user has logged out set the user to null
+            setUser(null)  // if user has logged out set the user to null
         }
-
     })
-  }, []);
+
+    return () => {
+// perform some clean up actions before re-firing the use effect
+
+    }
+  }, [user, username]);
 
   const signUp = (event) => {
     event.preventDefault()
