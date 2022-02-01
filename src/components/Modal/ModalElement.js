@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react"
 import './Modal.css';
 import Modal from '@mui/material/Modal';
 import { auth } from '../../firebase.js';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import{Button, Input} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -41,7 +41,6 @@ function ModalElement() {
     // listens for any authentication change that happens and fires authUser 
     // returns a function called an unsubscribe
       if (authUser) {
-        console.log(authUser)
         setUser(authUser)
       } else {
         setUser(null)
@@ -58,14 +57,20 @@ function ModalElement() {
     event.preventDefault();
 
     createUserWithEmailAndPassword(auth, email, password)
-    .then((authUser) => {
+    .then(() => {
       // if user is created update their username
-        return authUser.user.updateProfile({
+       return updateProfile(auth.currentUser, {
           displayName: username
         })
-    })
-    .catch((error) => alert(error.message))
-  }
+       }
+      )
+      .then(() => {
+        console.log(username)
+      })
+      .catch((error) => alert(error.message))
+    }
+
+
 
   return (
     <div className="modal">
