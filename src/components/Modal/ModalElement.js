@@ -5,6 +5,7 @@ import { auth } from '../../firebase.js';
 import { createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import{Button, Input} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import SignInModal from "../SignIn/SignInModal";
 
 function getModalStyle() {
     const top = 50;
@@ -106,7 +107,11 @@ function ModalElement() {
       {user ? (
         <Button onClick={() => signOut(auth)} >Log Out</Button>
       ) : (
-        <Button onClick={() => setOpen(true)} >Sign Up</Button>
+        <div className="app_loginContainer">
+          <SignInModal />
+          <Button onClick={() => setOpen(true)} >Sign Up</Button>
+
+        </div>
       ) }
     </div>
   )
