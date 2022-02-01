@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react"
 import './Modal.css';
 import Modal from '@mui/material/Modal';
 import { auth } from '../../firebase.js';
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import{Button, Input} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -103,7 +103,11 @@ function ModalElement() {
         </div>
       </Modal>
       <br></br>
+      {user ? (
+        <Button onClick={() => signOut(auth)} >Log Out</Button>
+      ) : (
         <Button onClick={() => setOpen(true)} >Sign Up</Button>
+      ) }
     </div>
   )
 }
