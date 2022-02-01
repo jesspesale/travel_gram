@@ -69,6 +69,8 @@ function ModalElement() {
         console.log(username)
       })
       .catch((error) => alert(error.message))
+      
+      setOpen(false)
     }
 
 
