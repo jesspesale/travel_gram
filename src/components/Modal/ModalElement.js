@@ -27,12 +27,12 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function ModalElement() {
+function ModalElement({username, setUsername}) {
   const classes = useStyles();
   // turns the useStyle function above into a constant
   const [open, setOpen] = useState(false);
   const [modalStyle] = useState(getModalStyle);
-  const [username, setUsername] = useState('');
+  // const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
@@ -119,4 +119,4 @@ function ModalElement() {
   )
 }
 
-export default ModalElement;
+export  default ModalElement;
