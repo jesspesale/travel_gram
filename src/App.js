@@ -27,8 +27,8 @@ function App() {
         <strong><p>TravelGram</p></strong>
       </div>
         <ImageUpload  />
-
         <ModalElement />
+
         {
           posts.map(({id, post}) => (
             <Post key={id} username={post.username} caption={post.caption} imgUrl={post.imgUrl} />

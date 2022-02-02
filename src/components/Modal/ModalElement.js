@@ -39,7 +39,7 @@ function ModalElement() {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
-    // listens for any authentication change that happens and fires authUser 
+// listens for any authentication change that happens and fires authUser 
     // returns a function called an unsubscribe
       if (authUser) {
         setUser(authUser)
