@@ -27,15 +27,15 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function ModalElement({username, setUsername}) {
+function ModalElement({user, setUser}) {
   const classes = useStyles();
   // turns the useStyle function above into a constant
   const [open, setOpen] = useState(false);
   const [modalStyle] = useState(getModalStyle);
-  // const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -47,19 +47,17 @@ function ModalElement({username, setUsername}) {
         setUser(null)
       }
     })
-        return () => {
-// perform some clean up actions before re-firing the use effect
+        return () => {// perform some clean up actions before re-firing the use effect
             unsubscribe();
         }
-
     }, [user, username]);
+
 
   const signUp = (event) => {
     event.preventDefault();
 
     createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      // if user is created update their username
+    .then(() => {  // if user is created update their username
        return updateProfile(auth.currentUser, {
           displayName: username
         })

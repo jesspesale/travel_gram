@@ -2,9 +2,11 @@ import { Button } from '@mui/material';
 import React, {useState} from "react"
 import {storage, db} from "../../firebase.js"
 import {ref} from "firebase/storage"
-import {username} from "../Modal/ModalElement"
+// import {username} from "../Modal/ModalElement"
+import { serverTimestamp } from "firebase/firestore";
 
-function ImageUpload({username, setUsername}) {
+
+function ImageUpload({user, setUser}) {
 
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
@@ -22,11 +24,11 @@ function ImageUpload({username, setUsername}) {
             "state_change",
             (snapshot) => {
 // tracks the progress of the upload
-                const progress = Math.round(
+                const progressLevel = Math.round(
     // works out a number 1-100 & set progess level to that number
                     (snapshot.bytesTransferred/snapshot.totalBytes) * 100
                 );
-                setProgress(progress);
+                setProgress(progressLevel);
             },
             (error) => {
             // tells you if there was any problems/errors w/ the upload
@@ -41,15 +43,16 @@ function ImageUpload({username, setUsername}) {
                 .then(url => {
                 // post img in database
                     db.collection("posts").add({
-                        // timestamp:  firebase.firestore.FieldValue.serverTimestamp(),
+                        timestamp: serverTimestamp(),
                         caption:    caption,
                         imgUrl:     url,
-                        username:   username   
+                        username:   user.displayName   
                     });
                 })
             }
-        )
-    };
+            )
+        };
+        
 
     const handleChange = (e) => {
         if (e.target.files[0]) {

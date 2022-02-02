@@ -9,7 +9,8 @@ import ImageUpload from "./components/ImageUpload/ImageUpload";
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const [username, setUsername] = useState('');
+  // const [username, setUsername] = useState('');
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     onSnapshot(collection(db, "posts"), (snapshot) => {
@@ -21,15 +22,20 @@ function App() {
   }, [posts]);
   // will run everytime a post changes
 
+  
   return (
     <div className="app"> 
       <div className="app_navbar" >
         {/* <img src=".src/Pictures/travelGram.png" /> */}
         <strong><p>TravelGram</p></strong>
       </div>
-        <ModalElement username={username} setUsername={setUsername}/>
+      {/* {user ?  (
+        ) : (
+          <h3>Sorry you need to login to upload</h3>
+          )} */}
+        <ImageUpload user={user} setUser={setUser} />
+        <ModalElement user={user} setUser={setUser} />
         <br></br>
-        <ImageUpload username={username} setUsername={setUsername} />
         {
           posts.map(({id, post}) => (
             <Post key={id} username={post.username} caption={post.caption} imgUrl={post.imgUrl} />
