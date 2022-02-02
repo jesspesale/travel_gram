@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import React, {useState} from "react"
-
+import {storage, db} from "../../firebase.js"
 
 function ImageUpload() {
 
@@ -27,8 +27,8 @@ function ImageUpload() {
             <input 
                 type="text" 
                 placeholder='Enter a caption . . .' 
-                onCange={event => setCaption(event.target.value)}
-                value=""
+                onChange={event => setCaption(event.target.value)}
+                value={caption}
             />
             <input type="file" onChange={handleChange} />
             <Button onClick={handleUpload}>Upload</Button>
