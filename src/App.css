@@ -11,10 +11,14 @@
 
 .app_navbar{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 15px;
     border-bottom: 1px solid lightgray;
     background-color: #aeddec;
     font-family: 'Supermercado One', cursive;
     font-size: 22px;
+}
+
+.nav_element{
+  display: inline;
 }

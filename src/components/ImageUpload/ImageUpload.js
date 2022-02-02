@@ -48,6 +48,9 @@ function ImageUpload({user, setUser}) {
                         imgUrl:     url,
                         username:   user.displayName   
                     });
+                  setProgress(0)
+                  setCaption('')
+                  setImage(null)
                 })
             }
             )

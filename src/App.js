@@ -27,15 +27,17 @@ function App() {
     <div className="app"> 
       <div className="app_navbar" >
         {/* <img src=".src/Pictures/travelGram.png" /> */}
-        <strong><p>TravelGram</p></strong>
+        <strong><p className="nav_element">TravelGram</p></strong>
+        <ModalElement user={user} setUser={setUser} className="nav_element" />
       </div>
 
+{/* ? is an optional to only apply that condition if user is defined somewhere */}
       {user?.displayName ? (
         <ImageUpload user={user} setUser={setUser} />
       ) : (
         <h3>Sorry you need to login to upload</h3>
       )}
-        <ModalElement user={user} setUser={setUser} />
+        
         <br></br>
         {
           posts.map(({id, post}) => (
