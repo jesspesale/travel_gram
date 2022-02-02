@@ -14,8 +14,11 @@ function ImageUpload() {
 
     }
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        if (e.target.files[0]) {
+// get the first file you selected and set the images state to that file
+            setImage(e.target.files[0])
+        }
     }
 
     return (
