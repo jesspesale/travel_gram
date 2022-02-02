@@ -5,6 +5,7 @@ import { db } from './firebase';
 import {collection, onSnapshot } from "firebase/firestore";
 
 import ModalElement from "./components/Modal/ModalElement"
+import ImageUpload from "./components/ImageUpload/ImageUpload";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -25,8 +26,9 @@ function App() {
         {/* <img src=".src/Pictures/travelGram.png" /> */}
         <strong><p>TravelGram</p></strong>
       </div>
-        <ModalElement />
+        <ImageUpload  />
 
+        <ModalElement />
         {
           posts.map(({id, post}) => (
             <Post key={id} username={post.username} caption={post.caption} imgUrl={post.imgUrl} />
