@@ -12,8 +12,22 @@ function ImageUpload() {
 
 
     const handleUpload = () => {
-//access storage and get a reference to this photo
-        const imagesRef = ref(storage, `images/${image.name}`).put(image)
+//access storage in fb and get a reference to the photo you selected
+        const uploadTask = ref(storage, `images/${image.name}`).put(image)
+                            //putting the image you ^ grabbed into that point
+
+        uploadTask.on(
+// on state change give me a snapshot
+            "state_change",
+            (snapshot) => {
+// tracks the progress of the upload
+                const progress = Math.round(
+    // works out a number 1-100 & set progess level to that number
+                    (snapshot.bytesTransferred/snapshot.totalBytes) * 100
+                );
+                setProgress(progress)
+            }
+        )
     }
 
     const handleChange = (e) => {
