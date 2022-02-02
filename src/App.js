@@ -29,11 +29,12 @@ function App() {
         {/* <img src=".src/Pictures/travelGram.png" /> */}
         <strong><p>TravelGram</p></strong>
       </div>
-      {/* {user ?  (
-        ) : (
-          <h3>Sorry you need to login to upload</h3>
-          )} */}
+
+      {user?.displayName ? (
         <ImageUpload user={user} setUser={setUser} />
+      ) : (
+        <h3>Sorry you need to login to upload</h3>
+      )}
         <ModalElement user={user} setUser={setUser} />
         <br></br>
         {

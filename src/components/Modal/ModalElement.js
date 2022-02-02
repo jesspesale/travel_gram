@@ -29,7 +29,6 @@ const useStyles = makeStyles(theme => ({
 
 function ModalElement({user, setUser}) {
   const classes = useStyles();
-  // turns the useStyle function above into a constant
   const [open, setOpen] = useState(false);
   const [modalStyle] = useState(getModalStyle);
   const [username, setUsername] = useState('');
