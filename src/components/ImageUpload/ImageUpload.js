@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import React, {useState} from "react"
 import {storage, db} from "../../firebase.js"
+import {ref} from "firebase/storage"
 
 function ImageUpload() {
 
@@ -11,7 +12,8 @@ function ImageUpload() {
 
 
     const handleUpload = () => {
-
+//access storage and get a reference to this photo
+        const imagesRef = ref(storage, `images/${image.name}`).put(image)
     }
 
     const handleChange = (e) => {
