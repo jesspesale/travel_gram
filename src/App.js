@@ -26,9 +26,9 @@ function App() {
         {/* <img src=".src/Pictures/travelGram.png" /> */}
         <strong><p>TravelGram</p></strong>
       </div>
-        <ImageUpload  />
         <ModalElement />
-
+        <br></br>
+        <ImageUpload  />
         {
           posts.map(({id, post}) => (
             <Post key={id} username={post.username} caption={post.caption} imgUrl={post.imgUrl} />
