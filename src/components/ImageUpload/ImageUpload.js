@@ -6,7 +6,7 @@ import {ref} from "firebase/storage"
 import { serverTimestamp } from "firebase/firestore";
 
 
-function ImageUpload({user, setUser}) {
+function ImageUpload({username}) {
 
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
@@ -46,7 +46,7 @@ function ImageUpload({user, setUser}) {
                         timestamp: serverTimestamp(),
                         caption:    caption,
                         imgUrl:     url,
-                        username:   user.displayName   
+                        username:   username  
                     });
                   setProgress(0)
                   setCaption('')

@@ -33,7 +33,7 @@ function App() {
 
 {/* ? is an optional to only apply that condition if user is defined somewhere */}
       {user?.displayName ? (
-        <ImageUpload user={user} setUser={setUser} />
+        <ImageUpload username={user.displayName} />
       ) : (
         <h3>Sorry you need to login to upload</h3>
       )}
